@@ -1,3 +1,5 @@
+import java.util.Set;
+
 public class Strings {
     
 
@@ -133,8 +135,132 @@ public class Strings {
 
 
         // STRING BUFFER
+
+        // The StringBuffer class is used to create and manipulate mutable sequences of characters. It is similar to the String class but provides more efficient ways to modify strings.
+
+        // To use a StringBuffer, you need to create an instance of the class.
          
-        StringBuffer nameThree = new StringBuffer("Teenskey");
+       // Option 1: Initialize an empty StringBuffer
+
+            StringBuffer sb = new StringBuffer();
+
+            // Option 2: Initialize with an initial capacity (recommended if you know the expected size)
+            int initialCapacity = 16; // You can adjust this based on your expected string length
+            StringBuffer sbWithCapacity = new StringBuffer(initialCapacity);
+
+            // Option 3: Initialize with a String
+            String initialString = "Hello";
+            StringBuffer sbWithString = new StringBuffer(initialString);
+
+
+            // 1. Size of a StringBuffer:
+
+            // The size of a StringBuffer refers to the number of characters it currently holds. You can get the current size using the length() method:
+
+            int size = sb.length();
+            System.out.println("Size of StringBuffer: " + size);
+            // 0
+
+
+           // 2. Appending data to StringBuffer:
+
+            // One of the primary purposes of StringBuffer is to concatenate strings efficiently. You can do this using the append() method:
+
+            sb.append("Hello"); // Append a String
+            sb.append(' '); // Append a character
+            sb.append(42); // Append an integer
+            sb.append(3.14); // Append a double
+
+            System.out.println(sb);
+
+            // Hello 423.14 - you can see how funny the integers have concatenated.
+
+            // 3. Inserting data into StringBuffer:
+
+            // You can also insert data at a specific position using the insert() method:
+
+            sb.insert(5, " world"); // Insert " world" at index 5
+
+            System.out.println(sb);
+
+            // Hello world 423.14
+
+            // 4. Deleting data from StringBuffer:
+
+            // If you want to remove characters from the StringBuffer, you can use the delete() method:
+
+            sb.delete(5, 11); // Delete characters from index 5 to 10 (exclusive)
+
+            System.out.println(sb);
+
+            // Hello 423.14
+
+            // 5. Replacing data in StringBuffer:
+
+            // You can replace characters in the StringBuffer using the replace() method:
+
+            sb.replace(0, 5, "Hi"); // Replace characters from index 0 to 4 with "Hi"
+            System.out.println(sb);
+
+            // Hi 423.14
+
+            //==========================
+
+                // Other useful methods:
+
+            //==========================
+
+            // charAt(int index): Get the character at a specific index.
+
+            // indexOf(String str): Find the index of the first occurrence of the specified string.
+
+            // substring(int start): Get the substring starting from the specified index.
+
+            // substring(int start, int end): Get the substring from the start index to the end index (exclusive).
+            
+            // reverse(): Reverse the characters in the StringBuffer.
+
+            // capacity(): Get the current capacity of the StringBuffer.
+
+            // setLength(int newLength): Set a new length for the StringBuffer.
+
+
+            // ADVANCED CONCEPTS:
+
+            // Thread Safety:
+            // Unlike StringBuilder, StringBuffer is thread-safe. This means it can be used in multithreaded environments without data corruption. However, if you don't need thread safety, it's recommended to use StringBuilder, which is more efficient due to lack of synchronization.
+
+            // Performance Considerations:
+            // If you are doing a lot of string concatenation or manipulation, prefer using StringBuilder instead of StringBuffer in single-threaded environments. StringBuilder provides better performance as it is not burdened with synchronization overhead.
+
+            // That covers the basics and some advanced concepts of using StringBuffer in Java. Remember to use StringBuffer when you need thread safety or if you are working in a multithreaded environment. Otherwise, consider using StringBuilder for better performance.
+
+
+            // Thread Safety:
+            
+            // In Java, a thread is like an independent sequence of instructions that can run concurrently with other threads in a program. When multiple threads are executing in a program, there is a possibility of data corruption or unexpected behavior if they access and modify the same data simultaneously. Thread safety refers to the property of a program or data structure that ensures it behaves correctly and predictably when accessed by multiple threads.
+            // In the context of StringBuffer and StringBuilder:
+
+            // StringBuffer is thread-safe, which means it has built-in mechanisms to handle multiple threads accessing it at the same time. This ensures that data corruption or inconsistency won't occur even if multiple threads are using the same StringBuffer object simultaneously.
+
+            // On the other hand, StringBuilder is not thread-safe. It is more efficient in single-threaded environments, meaning situations where only one thread is executing the program. In such cases, you won't face the risk of data corruption, and using StringBuilder provides better performance compared to StringBuffer.
+
+            // Synchronization:
+            // In the context of thread safety, synchronization is the process of coordinating the access to shared resources (like data structures or variables) among multiple threads. When a method or code block is "synchronized," it means that only one thread can execute that method or block at a time, ensuring exclusive access to the shared resource.
+            // StringBuffer achieves thread safety by making its methods synchronized. This allows multiple threads to use a single StringBuffer safely, but it also introduces some performance overhead because the threads need to wait for each other while accessing the shared StringBuffer.
+
+            // StringBuilder, being not thread-safe, does not have this synchronization overhead. It is faster in single-threaded scenarios, where you don't need to worry about multiple threads accessing the same StringBuilder simultaneously.
+
+            // Single-Threaded Environment:
+            // A single-threaded environment refers to a situation where only one thread is running and executing the program at any given time. In this scenario, you don't have to deal with the complexities of managing concurrent access to data because there is only one thread accessing the data. Most simple Java programs run in a single-threaded environment by default.
+
+
+
+
+
+
+
+
 
          
 
