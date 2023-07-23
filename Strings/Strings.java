@@ -143,6 +143,8 @@ public class Strings {
        // Option 1: Initialize an empty StringBuffer
 
             StringBuffer sb = new StringBuffer();
+            System.out.println(sb.capacity());
+            //16 
 
             // Option 2: Initialize with an initial capacity (recommended if you know the expected size)
             int initialCapacity = 16; // You can adjust this based on your expected string length
@@ -174,6 +176,14 @@ public class Strings {
             System.out.println(sb);
 
             // Hello 423.14 - you can see how funny the integers have concatenated.
+
+            // 3.0 Converting String Buffer back to normal string
+            StringBuffer convertToNormalString = new StringBuffer("Martin Kamau");
+            System.out.println(convertToNormalString.toString());
+            // Martin Kamau
+            System.out.println(convertToNormalString.getClass().getSimpleName());
+            // StringBuffer
+
 
             // 3. Inserting data into StringBuffer:
 
@@ -210,6 +220,10 @@ public class Strings {
 
             //==========================
 
+            // To know all the methods associated with String Buffer, just do for instance sb. and it will bring other methods that you can explore. 
+            // If you know StringBuffer you definitely now know String Builder.
+            sb.setLength( 6);
+
             // charAt(int index): Get the character at a specific index.
 
             // indexOf(String str): Find the index of the first occurrence of the specified string.
@@ -237,7 +251,7 @@ public class Strings {
 
 
             // Thread Safety:
-            
+
             // In Java, a thread is like an independent sequence of instructions that can run concurrently with other threads in a program. When multiple threads are executing in a program, there is a possibility of data corruption or unexpected behavior if they access and modify the same data simultaneously. Thread safety refers to the property of a program or data structure that ensures it behaves correctly and predictably when accessed by multiple threads.
             // In the context of StringBuffer and StringBuilder:
 
