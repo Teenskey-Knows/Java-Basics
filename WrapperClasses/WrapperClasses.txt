@@ -1,0 +1,67 @@
+In Java, wrapper classes are used to represent primitive data types as objects. Since Java is an object-oriented language, it treats everything as an object. However, primitive data types like int, double, char, etc., are not objects. To work with them in an object-oriented way, Java provides corresponding wrapper classes that wrap around the primitive values and provide additional functionality.
+
+The following are the wrapper classes for primitive data types:
+
+Integer for int
+Double for double
+Character for char
+Boolean for boolean
+Byte for byte
+Short for short
+Long for long
+Float for float
+Here's how you can use wrapper classes:
+
+AutoBoxing and Unboxing:
+AutoBoxing is the process of automatically converting a primitive type to its corresponding wrapper class when needed. Unboxing is the process of automatically converting a wrapper class object to its corresponding primitive type when needed.
+
+java
+Copy code
+public class WrapperClassExample {
+    public static void main(String[] args) {
+        // AutoBoxing: Converting int to Integer
+        int intValue = 42;
+        Integer integerValue = intValue; // AutoBoxing
+
+        // Unboxing: Converting Integer to int
+        Integer integerValue2 = 73;
+        int intValue2 = integerValue2; // Unboxing
+
+        System.out.println("intValue: " + intValue);
+        System.out.println("integerValue: " + integerValue);
+        System.out.println("intValue2: " + intValue2);
+        System.out.println("integerValue2: " + integerValue2);
+    }
+}
+Converting String to Wrapper Class and vice versa:
+Wrapper classes also provide methods to convert strings to their corresponding values and vice versa.
+
+java
+Copy code
+public class WrapperClassStringConversionExample {
+    public static void main(String[] args) {
+        // Converting String to Integer
+        String strInt = "123";
+        Integer convertedInt = Integer.parseInt(strInt);
+
+        // Converting String to Double
+        String strDouble = "3.14";
+        Double convertedDouble = Double.parseDouble(strDouble);
+
+        // Converting Integer to String
+        Integer intVal = 42;
+        String convertedStrInt = intVal.toString();
+
+        // Converting Double to String
+        Double doubleVal = 2.718;
+        String convertedStrDouble = doubleVal.toString();
+
+        System.out.println("convertedInt: " + convertedInt);
+        System.out.println("convertedDouble: " + convertedDouble);
+        System.out.println("convertedStrInt: " + convertedStrInt);
+        System.out.println("convertedStrDouble: " + convertedStrDouble);
+    }
+}
+In this example, we use Integer.parseInt() and Double.parseDouble() methods to convert strings to Integer and Double values, respectively. Similarly, we use the toString() method to convert Integer and Double objects back to strings.
+
+Wrapper classes are helpful when you need to store primitive data types in collections (like ArrayList), work with APIs that expect objects, or pass primitive values to methods that require objects as arguments. They bridge the gap between primitive types and objects, making Java a truly object-oriented language.

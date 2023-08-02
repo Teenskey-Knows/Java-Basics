@@ -1,0 +1,47 @@
+Dynamic method dispatch is a mechanism in Java that allows a method call to be resolved at runtime, rather than at compile-time. It is closely related to runtime polymorphism achieved through method overriding. The process involves determining which version of a method (from a subclass or superclass) to execute based on the actual type of the object at runtime. This enables the flexibility of treating different subclasses as objects of their common superclass and calling overridden methods dynamically.
+
+Let's see an example to understand dynamic method dispatch:
+
+java
+Copy code
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class DynamicMethodDispatchExample {
+    public static void main(String[] args) {
+        Animal animal;
+
+        animal = new Dog(); // Upcasting: Dog object treated as Animal reference
+        animal.makeSound(); // Output: Dog barks
+
+        animal = new Cat(); // Upcasting: Cat object treated as Animal reference
+        animal.makeSound(); // Output: Cat meows
+    }
+}
+In this example, we have a base class Animal and two subclasses Dog and Cat. Each subclass overrides the makeSound method to provide its specific implementation.
+
+During runtime, the following steps occur:
+
+The animal reference is declared of type Animal.
+The reference is first assigned a Dog object, and the makeSound method is called. However, since animal is declared as Animal, the compiler only knows about the makeSound method in the Animal class.
+At runtime, Java identifies that the object referred to by animal is actually a Dog object, so it invokes the makeSound method from the Dog class, which is the dynamically resolved method.
+This process is known as dynamic method dispatch, as the appropriate method to call is determined dynamically based on the actual type of the object. Upcasting (animal = new Dog(); and animal = new Cat();) allows us to treat Dog and Cat objects as Animal references, enabling polymorphic behavior. The actual method called depends on the type of the object that the reference is pointing to.
+
+Dynamic method dispatch is an essential feature of Java that supports polymorphism and facilitates code flexibility and reusability.

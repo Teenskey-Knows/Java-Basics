@@ -1,0 +1,58 @@
+n Java, the Object class is the root class of all other classes. It provides several important methods that are inherited by all Java objects, including equals, toString, and hashCode. Let's dive into each of these methods and their significance:
+
+toString() method:
+The toString() method is used to obtain a string representation of an object. By default, the toString() method inherited from the Object class returns a string containing the class name, followed by an '@' symbol, and the hash code of the object in hexadecimal format. However, it is often overridden in user-defined classes to provide a meaningful string representation.
+
+In the provided code, the toString() method is overridden in the Laptop class to provide a custom string representation of the Laptop object. It returns a string containing the model and price of the laptop.
+
+equals(Object obj) method:
+The equals() method is used to compare two objects for equality. The default implementation of equals() in the Object class checks for reference equality, i.e., it returns true if and only if the two references point to the same object in memory.
+
+However, it is common to override the equals() method in user-defined classes to provide a custom equality check based on the class's attributes. The method signature for equals() must take an Object parameter, and it should be properly typecasted to the actual class type inside the method.
+
+In the provided code, the equals() method is overridden in the Laptop class to compare the model and price attributes of two Laptop objects for equality.
+
+hashCode() method:
+The hashCode() method is used to obtain a hash code for an object. Hash codes are used in data structures like hash tables to efficiently store and retrieve objects. It is important to note that if two objects are considered equal by the equals() method, their hash codes must be the same.
+
+The hashCode() method is also inherited from the Object class, and its default implementation returns a memory address-based hash code. Like toString() and equals(), it is often overridden in user-defined classes to provide a meaningful hash code based on the class's attributes.
+
+In the provided code, the hashCode() method is not explicitly overridden, so it uses the default implementation provided by the Object class.
+
+Now, let's take a look at the provided code:
+
+java
+Copy code
+class Laptop {
+    String model;
+    int price;
+
+    public String toString() {
+        return model + " : " + price;
+    }
+
+    public boolean equals(Laptop that) {
+        return this.model.equals(that.model) && this.price == that.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Laptop obj = new Laptop();
+        obj.model = "Lenevo Yoga";
+        obj.price = 1000;
+
+        Laptop obj2 = new Laptop();
+        obj2.model = "Lenevo Yoga";
+        obj2.price = 1000;
+
+        boolean result = obj.equals(obj2);
+
+        System.out.println(obj.toString());
+    }
+}
+In this code, we have a Laptop class with model and price attributes. The toString() method is overridden to provide a custom string representation of a Laptop object. The equals() method is also overridden to compare two Laptop objects for equality based on their model and price attributes.
+
+In the main() method, we create two Laptop objects obj and obj2. Both objects have the same model and price values. We then call the equals() method on obj and pass obj2 as a parameter. Since we have overridden the equals() method to compare the model and price, the result variable will be true.
+
+Finally, we call obj.toString() to get the string representation of the obj Laptop object, which will be printed to the console as per the custom implementation provided in the toString() method.

@@ -1,0 +1,81 @@
+In Java, the final keyword is used to define entities that cannot be changed or further modified after their initial assignment. It can be applied to classes, methods, variables, and parameters, each with different use cases. Let's explore each of these use cases with code examples:
+
+Final Variables:
+When a variable is declared as final, its value cannot be changed once it is assigned. This is useful when you want to create constants or ensure that a variable remains constant throughout its scope.
+
+java
+Copy code
+public class FinalVariableExample {
+    public static void main(String[] args) {
+        final int constantValue = 10;
+
+        // Attempting to modify the value will result in a compile-time error
+        // constantValue = 20; // Error: Variable 'constantValue' might already have been assigned
+        System.out.println("Constant value: " + constantValue);
+    }
+}
+Final Methods:
+When a method is declared as final, it cannot be overridden by subclasses. This can be useful when you want to prevent subclasses from changing the behavior of a specific method.
+
+java
+Copy code
+class Parent {
+    public final void display() {
+        System.out.println("Parent class method");
+    }
+}
+
+class Child extends Parent {
+    // Attempting to override the final method will result in a compile-time error
+    // @Override
+    // public void display() {
+    //     System.out.println("Child class method");
+    // }
+}
+
+public class FinalMethodExample {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        parent.display(); // Output: Parent class method
+
+        Child child = new Child();
+        child.display(); // Output: Parent class method (inherited from Parent)
+    }
+}
+Final Classes:
+When a class is declared as final, it cannot be subclassed. This can be useful when you want to create a class that should not be extended or overridden.
+
+java
+Copy code
+final class FinalClass {
+    // Class implementation
+}
+
+// Attempting to create a subclass of a final class will result in a compile-time error
+// class Subclass extends FinalClass {
+//     // Class implementation
+// }
+Final Parameters:
+When a parameter of a method is declared as final, it acts as a constant within the method, and you cannot modify its value inside the method. This is helpful when you want to ensure that a parameter remains unchanged.
+
+java
+Copy code
+public class FinalParameterExample {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 20;
+
+        // The values of x and y are passed as final parameters to the add method
+        int result = add(x, y);
+        System.out.println("Result: " + result);
+    }
+
+    public static int add(final int a, final int b) {
+        // Attempting to modify the final parameters will result in a compile-time error
+        // a = 5; // Error: cannot assign a value to final variable 'a'
+        // b = 10; // Error: cannot assign a value to final variable 'b'
+
+        return a + b;
+    }
+}
+These are the various use cases of the final keyword in Java. It provides a way to create constants, prevent method overriding, avoid class inheritance, and maintain constant parameters. Using final appropriately can lead to more robust and maintainable code in your Java programs.

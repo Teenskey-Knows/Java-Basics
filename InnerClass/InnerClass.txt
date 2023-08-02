@@ -1,0 +1,74 @@
+
+Sure! Let's dive into Inner Classes in Java and how to access their values and methods from the main class.
+
+Inner Classes in Java:
+
+An inner class is a class defined within another class in Java.
+Inner classes have access to the members (fields and methods) of the outer class, including private members.
+There are four types of inner classes: static inner class, non-static (or instance) inner class, local inner class, and anonymous inner class.
+Static Inner Class:
+
+A static inner class is a nested class marked with the static keyword.
+It does not have access to the instance members of the outer class but can access the static members.
+You can create an object of the static inner class directly from the outer class or through its own class name.
+java
+Copy code
+public class OuterClass {
+    private static int outerStaticField = 10;
+    private int outerInstanceField = 20;
+
+    public static class StaticInnerClass {
+        private int innerField;
+
+        public StaticInnerClass(int value) {
+            this.innerField = value;
+        }
+
+        public void display() {
+            // Static inner class can access only static members of the outer class
+            System.out.println("StaticInnerClass: " + outerStaticField);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Accessing static inner class from the outer class
+        StaticInnerClass inner = new StaticInnerClass(30);
+        inner.display(); // Output: StaticInnerClass: 10
+
+        // Accessing static inner class directly
+        OuterClass.StaticInnerClass directInner = new OuterClass.StaticInnerClass(40);
+        directInner.display(); // Output: StaticInnerClass: 10
+    }
+}
+Non-static (Instance) Inner Class:
+A non-static inner class is a nested class without the static keyword.
+It has access to both static and instance members of the outer class.
+To create an object of the non-static inner class, you need an instance of the outer class.
+java
+Copy code
+public class OuterClass {
+    private int outerInstanceField = 20;
+
+    public class InnerClass {
+        private int innerField;
+
+        public InnerClass(int value) {
+            this.innerField = value;
+        }
+
+        public void display() {
+            // Non-static inner class can access both static and instance members of the outer class
+            System.out.println("InnerClass: " + outerInstanceField);
+        }
+    }
+
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner = outer.new InnerClass(30);
+        inner.display(); // Output: InnerClass: 20
+    }
+}
+Accessing Values and Methods from Main Class:
+To access values and methods of an inner class from the main class, you need to create an instance of the inner class using an instance of the outer class (for non-static inner classes).
+For static inner classes, you can create an instance directly using the class name.
+Keep in mind that inner classes are used when you need a tight coupling between the inner and outer classes. They can be helpful when you want to group related functionality together or when the inner class is used only in the context of the outer class and not elsewhere.

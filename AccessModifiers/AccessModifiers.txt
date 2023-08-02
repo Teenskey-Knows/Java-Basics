@@ -1,0 +1,87 @@
+In Java, access modifiers are keywords used to define the visibility or accessibility of classes, methods, variables, and constructors in different parts of the code. There are four main access modifiers in Java:
+
+public: The most permissive access level. It allows a class, method, variable, or constructor to be accessed from any other class in the same or different packages.
+
+protected: Allows access from the same class, subclasses (even if they are in different packages), and other classes in the same package.
+
+default (package-private): When no access modifier is specified, it is considered as the default access level. It allows access only within the same package.
+
+private: The most restrictive access level. It allows access only within the same class.
+
+
+
+Example 1: Access Modifiers for Class Members
+
+
+package com.example;
+
+// Public class accessible from anywhere
+public class MyClass {
+    // Public variable accessible from anywhere
+    public int publicVar = 10;
+
+    // Protected variable accessible within the same package and subclasses
+    protected int protectedVar = 20;
+
+    // Default (package-private) variable accessible within the same package
+    int defaultVar = 30;
+
+    // Private variable accessible only within this class
+    private int privateVar = 40;
+
+    // Public method accessible from anywhere
+    public void publicMethod() {
+        System.out.println("This is a public method.");
+    }
+
+    // Protected method accessible within the same package and subclasses
+    protected void protectedMethod() {
+        System.out.println("This is a protected method.");
+    }
+
+    // Default (package-private) method accessible within the same package
+    void defaultMethod() {
+        System.out.println("This is a default method.");
+    }
+
+    // Private method accessible only within this class
+    private void privateMethod() {
+        System.out.println("This is a private method.");
+    }
+}
+
+
+Example 2: Access Modifiers in a Different Package
+
+java
+Copy code
+package com.example;
+
+// This class is in a different package
+public class AnotherClass {
+    public static void main(String[] args) {
+        MyClass myClassObj = new MyClass();
+
+        // Accessing public variables and methods is allowed from anywhere
+        System.out.println(myClassObj.publicVar); // Output: 10
+        myClassObj.publicMethod(); // Output: This is a public method.
+
+        // Protected members are accessible in subclasses (even in a different package)
+        System.out.println(myClassObj.protectedVar); // Output: 20
+        myClassObj.protectedMethod(); // Output: This is a protected method.
+
+        // Default members are accessible within the same package
+        // This code will work only if AnotherClass is in the same package as MyClass
+
+        // System.out.println(myClassObj.defaultVar); // Error: Cannot access defaultVar
+        // myClassObj.defaultMethod(); // Error: Cannot access defaultMethod
+
+        // Private members are not accessible outside the class
+        // The following code will result in an error
+        // System.out.println(myClassObj.privateVar); // Error: Cannot access privateVar
+        // myClassObj.privateMethod(); // Error: Cannot access privateMethod
+    }
+}
+In this example, MyClass is accessible from AnotherClass, but the accessibility of its members depends on their access modifiers. Public members can be accessed from anywhere, protected members can be accessed from subclasses (even in different packages), default members can be accessed within the same package, and private members can only be accessed within the class they are declared in.
+
+Remember that proper use of access modifiers helps maintain encapsulation, restrict unauthorized access, and promote good object-oriented design practices in your Java programs.

@@ -1,0 +1,71 @@
+
+Polymorphism is one of the four fundamental principles of object-oriented programming (OOP) and is supported in Java. It allows objects of different classes to be treated as objects of a common superclass, providing a unified interface to interact with them. There are two types of polymorphism in Java: compile-time (method overloading) and runtime (method overriding). Let's explore both types with code examples:
+
+Compile-Time Polymorphism (Method Overloading):
+Method overloading allows multiple methods with the same name but different parameter lists in the same class. The compiler determines which method to call based on the number or types of arguments passed.
+
+java
+Copy code
+public class MathOperations {
+    // Method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+
+        System.out.println(math.add(2, 3));                // Output: 5
+        System.out.println(math.add(2, 3, 4));             // Output: 9
+        System.out.println(math.add(2.5, 3.5));            // Output: 6.0
+    }
+}
+In this example, we have overloaded the add method to handle different types and numbers of parameters. The compiler determines the appropriate method to call based on the arguments provided.
+
+Runtime Polymorphism (Method Overriding):
+Method overriding allows a subclass to provide a specific implementation of a method that is already defined in its superclass. It occurs during runtime, where the method to be called is determined based on the actual type of the object at runtime.
+
+java
+Copy code
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class PolymorphismExample {
+    public static void main(String[] args) {
+        Animal animal1 = new Dog();
+        Animal animal2 = new Cat();
+
+        animal1.sound(); // Output: Dog barks
+        animal2.sound(); // Output: Cat meows
+    }
+}
+In this example, we have a base class Animal, and two subclasses Dog and Cat. Each subclass overrides the sound method to provide its specific implementation. At runtime, when we create objects of Dog and Cat and assign them to variables of type Animal, Java uses method overriding to call the appropriate sound method based on the actual type of the object.
+
+Polymorphism allows us to write flexible and extensible code since we can treat objects of different classes in a unified manner using their common superclass or interface. This is a powerful feature of object-oriented programming that promotes code reuse and readability.
