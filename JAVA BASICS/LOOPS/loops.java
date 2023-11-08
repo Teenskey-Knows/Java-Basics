@@ -83,4 +83,39 @@ for (int i = 0; i < 10; i++) {
 
 
 
+NESTED SWITCH STATEMENTS
+
+
+int outerChoice = 2;
+int innerChoice = 1;
+
+
+
+switch (outerChoice) {
+    case 1:
+        System.out.println("Outer choice is 1");
+        switch (innerChoice) {
+            case 1:
+                System.out.println("Inner choice is 1");
+                break;
+            case 2:
+                System.out.println("Inner choice is 2");
+                break;
+            default:
+                System.out.println("Unknown inner choice");
+                break;
+        }
+        break;
+
+    case 2:
+        System.out.println("Outer choice is 2");
+        // You can have another set of switch statements here or any other code.
+        break;
+
+    default:
+        System.out.println("Unknown outer choice");
+        break;
+}
+
+
  */

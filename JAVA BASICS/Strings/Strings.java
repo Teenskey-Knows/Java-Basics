@@ -114,6 +114,12 @@ public class Strings {
 
 
 
+        //14. .toCharArray()
+
+        // Converts a string into an an array of characters
+
+        String arrayString  = "To Array";
+        char[] arrayed = arrayString.toCharArray();
 
 
 
