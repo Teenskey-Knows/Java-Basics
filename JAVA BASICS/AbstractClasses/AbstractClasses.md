@@ -20,7 +20,7 @@ Step 2: Creating Concrete Classes
 Now, we'll create two concrete classes Circle and Rectangle, which will extend the Shape abstract class:
 
 java
-Copy code
+
 class Circle extends Shape {
     private double radius;
 
